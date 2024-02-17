@@ -44,7 +44,10 @@ update_student() {
     echo "Student record updated successfully!"
 }
 
-# Function to exit the application
+select_student_emails() {
+    ./select-emails.sh
+}
+
 exit_application() {
     echo "Exiting the application.Bye!"
     exit 0
@@ -52,11 +55,15 @@ exit_application() {
 
 # Menu for the application
 while true; do
+    echo "------------------"
+    echo "ALU Registration System"
+    echo "------------------"
     echo "1. Create Student Record"
     echo "2. View Students"
     echo "3. Delete Student"
     echo "4. Update Student Record"
-    echo "5. Exit"
+    echo "5. Select Student Emails"
+    echo "6. Exit"
     read choice
 
     case $choice in
@@ -64,7 +71,8 @@ while true; do
         2) view_students;;
         3) delete_student;;
         4) update_student;;
-        5) exit_application;;
+	5) select_student_emails;;
+        6) exit_application;;
         *) echo "Invalid choice. Please choose a valid option.";;
     esac
 done
