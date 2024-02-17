@@ -1,0 +1,2 @@
+boris@alustuden.com,21,12345
+kate@alustudent.com,30,12344
