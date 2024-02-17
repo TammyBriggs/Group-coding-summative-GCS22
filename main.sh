@@ -1,6 +1,9 @@
 #!/bin/bash
 
 create_student() {
+    echo "Enter student email:"
+    read email
+
     echo "Enter student age:"
     read age
 
@@ -8,7 +11,7 @@ create_student() {
     read student_id
 
     echo "$email,$age,$student_id" >> students-list_1023.txt
-    echo "Student record has been created successfully!"
+    echo "Student record created successfully!"
 }
 
 view_students() {
@@ -21,9 +24,9 @@ delete_student() {
     read student_id
 
     # Check if the student ID exists in the file
-    if grep -q "^$student_id" students-list_1023.txt; then
+    if grep -q "$student_id" students-list_1023.txt; then
         # Delete the student record
-        sed -i "/^$student_id/d" students-list_1023.txt
+        sed -i "/$student_id/d" students-list_1023.txt
         echo "Student with ID $student_id deleted successfully!"
     else
         echo "Error: Student with ID $student_id does not exist."
