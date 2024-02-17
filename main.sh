@@ -35,13 +35,28 @@ delete_student() {
 
 update_student() {
     echo "Enter the student ID to update:"
-    read student_id
+    read update_id
 
-    sed -i "/$student_id/{
-        s/^.*$/$(create_student)/
-    }" students-list_1023.txt
+    # Check if the student ID exists in the file
+    if grep -q "$update_id" students-list_1023.txt; then
+        # Get the existing student details
+        existing_details=$(grep "$update_id" students-list_1023.txt)
 
-    echo "Student record updated successfully!"
+        # Extract existing email and age
+        existing_email=$(echo $existing_details | cut -d',' -f1)
+        existing_age=$(echo $existing_details | cut -d',' -f2)
+
+        # Prompt user for updated email and age
+        read -p "Update email (current: $existing_email): " updated_email
+        read -p "Update age (current: $existing_age): " updated_age
+
+        # Update the student record
+        sed -i "s/$existing_details/$(echo "$updated_email,$updated_age,$update_id")/" students-list_1023.txt
+
+        echo "Student record updated successfully!"
+    else
+        echo "Error: Student with ID $update_id does not exist."
+    fi
 }
 
 select_student_emails() {
