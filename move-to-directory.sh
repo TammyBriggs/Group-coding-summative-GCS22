@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#initialisation
 directory_name="negpod_22-q1"
 
 # Directory creation
