@@ -2,7 +2,7 @@
 
 directory_name="negpod_22-q1"
 
-# Create the directory
+# Directory creation
 mkdir -p "$directory_name"
 
 # Move all four files to the directory
