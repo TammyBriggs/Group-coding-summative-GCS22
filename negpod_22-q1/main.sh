@@ -60,7 +60,7 @@ update_student() {
 }
 
 select_student_emails() {
-    ./select-emails.sh
+    cat student-emails.txt
 }
 
 exit_application() {
